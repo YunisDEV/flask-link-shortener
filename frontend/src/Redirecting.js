@@ -21,8 +21,8 @@ export default class Redirecting extends React.Component {
             return this.setState({
                 inner: (
                     <div className="success">
-                        <p>Link wants to redirect you <b>{data.url}</b></p>
-                        <div className="btnBx"><button>GO TO</button></div>
+                        <p>Link wants to redirect you<br/><b>{data.url}</b></p>
+                        <div className="btnBx"><a href={data.url} className="btn">GO</a></div>
                     </div>
                 )
             })
