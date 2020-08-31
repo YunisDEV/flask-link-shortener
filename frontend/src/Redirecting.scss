@@ -1,0 +1,25 @@
+$main: rgb(0, 125, 163);
+.success {
+    p{
+        margin-bottom:20px;
+    }
+    .btnBx {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        button {
+            border: 2px solid $main;
+            padding: 20px;
+            border-radius: 20px;
+            transition: 0.3s all ease-out;
+            background-color: white;
+            color: $main;
+            font-weight: bolder;
+            cursor: pointer;
+            &:hover {
+                background-color: $main;
+                color: white;
+            }
+        }
+    }
+}

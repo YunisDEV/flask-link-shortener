@@ -1,7 +1,23 @@
 import React from 'react';
 import './App.scss'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Redirecting from './Redirecting'
 
-class App extends React.Component {
+export default function App() {
+  return (
+    <React.Fragment>
+      <Router >
+        <Switch>
+          <Route exact path="/" component={Main} />
+          <Route path="/:postfix" component={Redirecting} />
+        </Switch>
+      </Router>
+    </React.Fragment>
+  )
+}
+
+
+class Main extends React.Component {
   constructor(props) {
     super(props)
     this.state = { link: '', createdLink: '' }
@@ -9,7 +25,6 @@ class App extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleChange(e) {
-    console.log(e.target.value)
     if (e.target) {
       this.setState({ [e.target.name]: e.target.value });
     } else if (e.name && e.value) {
@@ -29,7 +44,11 @@ class App extends React.Component {
       body: JSON.stringify({ linkToRedirect: this.state.link })
     })
     var data = await res.json()
-    console.log(data)
+    this.setState({ createdLink: data.createdLink })
+  }
+  getHOST() {
+    var arr = window.location.href.split('/')
+    return arr[0] + "//" + arr[2] + '/'
   }
   render() {
     return (
@@ -47,7 +66,7 @@ class App extends React.Component {
               this.state.createdLink ?
                 <div>
                   <p>Link is ready:</p>
-                  <a href={"http://localhost:9000/" + this.state.createdLink}>{"http://localhost:9000/" + this.state.createdLink}</a>
+                  <a href={this.getHOST() + this.state.createdLink}>{this.getHOST() + this.state.createdLink}</a>
                 </div>
                 :
                 null
@@ -58,5 +77,3 @@ class App extends React.Component {
     );
   }
 }
-
-export default App;
