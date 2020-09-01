@@ -26,9 +26,11 @@ def create():
         response = Response('Cannot get /create')
     return response
 
+
 @app.route('/<postfix>', methods=['GET'])
 def render_redirect_page(postfix):
     return app.send_static_file('index.html')
+
 
 @app.route('/ls/<postfix>', methods=['GET'])
 def postfix(postfix):
@@ -39,6 +41,6 @@ def postfix(postfix):
         return Response('404', status=status.HTTP_404_NOT_FOUND)
 
 
-if __name__ == '__main__':
-    app.run(debug=True,
-            port=os.environ.get("PORT", 8080))
+# if __name__ == '__main__':
+#     app.run(debug=True,
+#             port=os.environ.get("PORT", 8080))
