@@ -5,7 +5,7 @@ import json
 from flask import Flask, request, Response, redirect
 from flask_api import status
 # app = Flask(__name__, static_folder='./frontend/build', static_url_path='/')
-app = Flask(__name__, static_folder='./build', static_url_path='/')
+app = Flask(__name__, static_folder='./public', static_url_path='/')
 
 
 @app.route('/')
