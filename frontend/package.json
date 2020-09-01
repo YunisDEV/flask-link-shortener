@@ -16,7 +16,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "postbuild":"cp ./build ../build -r",
+    "postbuild":"cp ./build ../public -r",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
