@@ -4,7 +4,6 @@ from link import generateLink
 import json
 from flask import Flask, request, Response, redirect
 from flask_api import status
-# app = Flask(__name__, static_folder='./frontend/build', static_url_path='/')
 app = Flask(__name__, static_folder='./public', static_url_path='/')
 
 
@@ -39,8 +38,3 @@ def postfix(postfix):
         return {'url': el["link"]}
     else:
         return Response('404', status=status.HTTP_404_NOT_FOUND)
-
-
-# if __name__ == '__main__':
-#     app.run(debug=True,
-#             port=os.environ.get("PORT", 8080))
